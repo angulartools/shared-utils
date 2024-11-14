@@ -1,0 +1,14 @@
+{
+  "name": "shared-utils",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^18.2.0",
+    "@angular/core": "^18.2.0"
+  },
+  "dependencies": {
+    "imask": "^7.6.1",
+    "sweetalert2": "^11.14.5",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
