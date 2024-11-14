@@ -3,5 +3,6 @@
   "dest": "../../dist/shared-utils",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["imask", "sweetalert2"]
 }
