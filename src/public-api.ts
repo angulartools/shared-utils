@@ -10,5 +10,3 @@ export * from './lib/pipes/utcDate.pipe';
 export * from './lib/mask/mask';
 export * from './lib/services/alert.service';
 export * from './lib/directives/slimscroll.directive';
-export * from './lib/translation/translation.pipe';
-export * from './lib/translation/translation.service';
