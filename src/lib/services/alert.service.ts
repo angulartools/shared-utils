@@ -1,12 +1,12 @@
 import { SweetAlertOptions } from 'sweetalert2';
 import Swal from 'sweetalert2';
 import { inject, Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslationService } from '@angulartoolsdr/translation';
 
 @Injectable({providedIn: 'root'})
 export class AlertService {
 
-  translate = inject(TranslateService);
+  translate = inject(TranslationService);
 
   alertText(title: string, message: any, fnConfirm?: any, fnCancel?: any) {
 
