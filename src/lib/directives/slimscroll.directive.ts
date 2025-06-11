@@ -3,8 +3,7 @@ import { Directive, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 import Scrollbar from 'smooth-scrollbar';
 
 @Directive({
-    selector: '[appSlimScroll]',
-    standalone: true
+    selector: '[appSlimScroll]'
 })
 export class SlimscrollDirective implements AfterViewInit {
 

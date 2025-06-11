@@ -3,8 +3,7 @@ import IMask from 'imask';
 import { Mask } from '../mask/mask';
 
 @Pipe({
-    name: 'cpfCnpjFormat',
-    standalone: true
+    name: 'cpfCnpjFormat'
 })
 export class CpfCnpjFormat implements PipeTransform {
 
