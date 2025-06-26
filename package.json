@@ -1,10 +1,10 @@
 {
   "name": "@angulartoolsdr/shared-utils",
-  "version": "20.0.0",
+  "version": "20.0.1",
   "peerDependencies": {
     "@angular/common": "20.0.3",
     "@angular/core": "20.0.3",
-    "@angulartoolsdr/translation": "file:../../dist/translation"
+    "@angulartoolsdr/translation": "20.0.0"
   },
   "dependencies": {
     "imask": "^7.6.1",
