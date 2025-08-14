@@ -1,15 +1,15 @@
 {
   "name": "@angulartoolsdr/shared-utils",
-  "version": "20.1.4",
+  "version": "20.1.7",
   "peerDependencies": {
-    "@angular/common": "20.1.4",
-    "@angular/core": "20.1.4",
-    "@angulartoolsdr/translation": "20.1.4"
+    "@angular/common": "20.1.7",
+    "@angular/core": "20.1.7",
+    "@angulartoolsdr/translation": "20.1.7"
   },
   "dependencies": {
     "imask": "^7.6.1",
     "smooth-scrollbar": "^8.8.4",
-    "sweetalert2": "^11.22.2",
+    "sweetalert2": "^11.22.4",
     "tslib": "^2.8.1"
   },
   "sideEffects": false
