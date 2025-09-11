@@ -1,0 +1,17 @@
+<div class="widget-simple card mb-1" style="box-shadow: none">
+  <div class="card-body px-2 py-1">
+    <p class="text-muted mb-2">{{label | translate}}</p>
+    <h5 class="mt-0 mb-1">
+      <span>
+        <span>{{data == null || data == "null" ? "-" : data}}</span>
+      </span>
+    </h5>
+  </div>
+</div>
+@if(labelInfo !== null && labelInfo !== undefined) {
+  <div class="mt-n1">
+    <span class="float-right">
+      <small>{{labelInfo}}</small>
+    </span>
+  </div>
+}
