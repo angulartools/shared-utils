@@ -3,6 +3,7 @@ export class Mask {
   static LANG_PT = 'pt-BR';
   static LANG_EN = 'en-US';
   static LANG_ES = 'es-ES';
+  static LANG_SE = 'se-SW';
 
   static getMaskCnpj(): any {
     const mask = {
@@ -65,6 +66,10 @@ export class Mask {
         case Mask.LANG_EN:
             mask.thousandsSeparator = ',',
             mask.radix = '.';
+            break;
+        case Mask.LANG_SE:
+            mask.thousandsSeparator = ' ',
+            mask.radix = ',';
             break;
         default:
             break;
