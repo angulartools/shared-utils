@@ -1,0 +1,38 @@
+<div class="alert-container" [class]="type()">
+    
+	<div class="icon">
+		<i [class]="iconClass()" class="fa-fw fa-4x"></i>
+	</div>
+
+	<h2 class="title">{{ title() }}</h2>
+	
+	@if (!isInput()) {
+		<p class="message">{{ message() }}</p>
+	} @else {
+		<input
+			[(ngModel)]="inputValue"
+			matInput
+			[placeholder]="placeholder()"
+			type="text"
+		/>
+	}
+
+	<div class="actions">
+		@if (isConfirm() || isInput()) {
+			<button
+				mat-button
+				class="cancel-btn"
+				(click)="cancel()">
+				<i class="ft-x"></i> {{ cancelText() }}
+			</button>
+		}
+
+		<button
+			mat-button
+			class="confirm-btn"
+			(click)="confirm()">
+			<i class="ft-check"></i> {{ confirmText() }}
+		</button>
+	</div>
+	
+</div>

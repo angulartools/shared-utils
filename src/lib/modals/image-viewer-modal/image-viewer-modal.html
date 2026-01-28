@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>
+  <span>{{'IMAGEM' | translate}}</span>
+</h2>
+<mat-dialog-content class="image-container">
+  <img [src]="image" />
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-between">
+  <button mat-stroked-button color="accent" type="button" (click)="closeDialog()">
+    <i class="fa fa-xmark mr-1"></i>{{'FECHAR' | translate}}
+  </button>
+</mat-dialog-actions>

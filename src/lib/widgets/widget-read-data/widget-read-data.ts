@@ -3,11 +3,11 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'lib-widget-read-data',
-  templateUrl: './widget-read-data.component.html',
-  styleUrls: ['./widget-read-data.component.scss'],
+  templateUrl: './widget-read-data.html',
+  styleUrls: ['./widget-read-data.scss'],
   imports: [TranslationPipe]
 })
-export class WidgetReadDataComponent {
+export class WidgetReadData {
 
   @Input() label: string;
   @Input('data')

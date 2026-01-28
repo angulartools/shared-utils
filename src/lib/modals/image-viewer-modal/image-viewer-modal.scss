@@ -1,0 +1,16 @@
+/* no seu .css do componente */
+.image-container {
+    display: flex;          /** centraliza a imagem */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;       /** evita barra de rolagem */
+  }
+  
+  .image-container img {
+    max-width: 100%;        /** ocupa toda a largura da modal */
+    max-height: 100%;       /** ocupa toda a altura da modal */
+    object-fit: contain;    /** mantém proporção sem cortar */
+  }
+  
