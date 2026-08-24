@@ -1,9 +1,7 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Service, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class UpdateComponentService implements OnDestroy {
 
   intervaloUpdate = 60;
@@ -14,7 +12,7 @@ export class UpdateComponentService implements OnDestroy {
   stopZero;
 
   private update: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    update$: Observable<boolean> = this.update.asObservable();
+  update$: Observable<boolean> = this.update.asObservable();
 
   constructor() {
     // this.initTimer();
@@ -30,7 +28,7 @@ export class UpdateComponentService implements OnDestroy {
         this.contadorUpdate = this.intervaloUpdate;
       }
       //setTimeout(() => {
-        this.vTimerUpdate = this.timerUpdate();
+      this.vTimerUpdate = this.timerUpdate();
       //}, 1000);
     }
   }

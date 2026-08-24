@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Service, signal } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class MaxmimizeScreenService {
 
-  private maximize: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    maximize$: Observable<boolean> = this.maximize.asObservable();
+  private readonly maximizeSignal = signal(false);
 
-  constructor() {
-    this.maximize.next(false);
+  readonly maximize = this.maximizeSignal.asReadonly();
+
+  readonly maximize$ = toObservable(this.maximizeSignal);
+
+  updateMaximize(value: boolean): void {
+    this.maximizeSignal.set(value);
   }
 
-  updateMaximize(value) {
-    this.maximize.next(value);
+  toggle(): void {
+    this.maximizeSignal.update(v => !v);
   }
 
 }

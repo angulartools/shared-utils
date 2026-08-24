@@ -3,21 +3,36 @@ import IMask from 'imask';
 import { Mask } from '../mask/mask';
 
 @Pipe({
-    name: 'cpfCnpjFormat'
+  name: 'cpfCnpjFormat'
 })
 export class CpfCnpjFormat implements PipeTransform {
 
-  maskCnpj = IMask.createMask(Mask.getMaskCnpj());
-  maskCpf = IMask.createMask(Mask.getMaskCpf());
+  transform(value?: string | number | null): string {
 
-  transform(value: string) {
-    if (value.length === 11) {
-      this.maskCpf.resolve(value);
-      return this.maskCpf.value;
-    } else if (value.length === 14) {
-      this.maskCnpj.resolve(value);
-      return this.maskCnpj.value;
+    if (value == null) {
+      return '';
     }
-    return '';
+
+    const valor = String(value).replace(/\D/g, '');
+
+    if (!valor) {
+      return '';
+    }
+
+    if (valor.length === 11) {
+      const mask = IMask.createMask(Mask.getMaskCpf());
+      mask.resolve(valor);
+      return mask.value;
+    }
+
+    if (valor.length === 14) {
+      const mask = IMask.createMask(Mask.getMaskCnpj());
+      mask.resolve(valor);
+      return mask.value;
+    }
+
+    return valor;
+
   }
+
 }

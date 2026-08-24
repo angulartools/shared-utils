@@ -4,7 +4,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
-type AlertType = 'success' | 'error' | 'warning' | 'info' | 'confirm' | 'input';
+type AlertType = | 'success' | 'error' | 'warning' | 'info' | 'confirm' | 'input';
+
+interface AlertData {
+  title?: string;
+  message?: string;
+  type?: AlertType;
+  confirmText?: string;
+  cancelText?: string;
+  placeholder?: string;
+}
 
 @Component({
   selector: 'lib-alert',
@@ -13,43 +22,50 @@ type AlertType = 'success' | 'error' | 'warning' | 'info' | 'confirm' | 'input';
   styleUrl: './alert.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-
 export class Alert {
 
   readonly dialogRef = inject(MatDialogRef<Alert>);
-
-  readonly data = inject(MAT_DIALOG_DATA);
-
+  readonly data = inject<AlertData>(MAT_DIALOG_DATA);
   readonly title = signal(this.data.title ?? '');
   readonly message = signal(this.data.message ?? '');
   readonly type = signal<AlertType>(this.data.type ?? 'info');
-
   readonly confirmText = signal(this.data.confirmText ?? 'OK');
-  readonly cancelText = signal(this.data.cancelText ?? 'OK');
+  readonly cancelText = signal(this.data.cancelText ?? 'CANCELAR');
   readonly placeholder = signal(this.data.placeholder ?? '');
+  inputValue = signal('');
 
-  inputValue: string = '';
+  readonly isConfirm = computed(() => this.type() === 'confirm');
+  readonly isInput = computed(() => this.type() === 'input');
 
-  isConfirm = computed(() => this.type() === 'confirm');
-  isInput = computed(() => this.type() === 'input');
-
-  iconClass(): string {
-    switch (this.type()) {
-      case 'success': return 'fa-solid fa-circle-check text-success';
-      case 'error': return 'fa-solid fa-circle-xmark text-error';
-      case 'warning': return 'fa-solid fa-triangle-exclamation text-warning';
-      case 'info': return 'fa-light fa-circle-check text-success';
-      case 'confirm': return 'fa-light fa-circle-question text-info';
-      case 'input': return 'fa-light fa-pen-to-square text-confirm';
-      default: return '';
+  readonly iconClass =
+    computed(() => {
+      switch (this.type()) {
+        case 'success':
+          return 'fa-solid fa-circle-check text-success';
+        case 'error':
+          return 'fa-solid fa-circle-xmark text-error';
+        case 'warning':
+          return 'fa-solid fa-triangle-exclamation text-warning';
+        case 'info':
+          return 'fa-light fa-circle-check text-success';
+        case 'confirm':
+          return 'fa-light fa-circle-question text-info';
+        case 'input':
+          return 'fa-light fa-pen-to-square text-confirm';
+        default:
+          return '';
+      }
     }
-  }
+    );
 
   confirm() {
-    this.dialogRef.close(this.isInput() ? this.inputValue : true);
+    this.dialogRef.close(
+      this.isInput() ? this.inputValue() : true
+    );
   }
 
   cancel() {
     this.dialogRef.close(false);
   }
+
 }

@@ -1,0 +1,85 @@
+.snackbar {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	padding: 16px 20px;
+	border-radius: 6px;
+	min-width: 320px;
+	max-width: 600px;
+
+	font-weight: 500;
+	line-height: 1.4;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.snackbar-progress {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	height: 4px;
+	width: 100%;
+
+	animation-name: snackbar-progress;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.snackbar-progress-success {
+	background: #00e676;
+}
+
+.snackbar-progress-error {
+	background: #ff5252;
+}
+
+.snackbar-progress-warning {
+	background: #ffd740;
+}
+
+.snackbar-progress-info {
+	background: #40c4ff;
+}
+
+@keyframes snackbar-progress {
+	from {
+		width: 100%;
+	}
+
+	to {
+		width: 0%;
+	}
+}
+
+.snackbar-icon {
+	font-size: 22px;
+	width: 22px;
+	height: 22px;
+	flex-shrink: 0;
+}
+
+.snackbar-message {
+	flex: 1;
+	word-break: break-word;
+}
+
+.snackbar-success {
+	background: #51a351;
+	color: white;
+}
+
+.snackbar-error {
+	background: #bf3630;
+	color: white;
+}
+
+.snackbar-warning {
+	background: #f89408;
+	color: white;
+}
+
+.snackbar-info {
+	background: #3196b4;
+	color: white;
+}

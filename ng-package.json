@@ -4,5 +4,8 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "allowedNonPeerDependencies": ["imask", "angular/material", "smooth-scrollbar"]
+  "allowedNonPeerDependencies": [
+    "imask",
+    "angular/material"
+  ]
 }
