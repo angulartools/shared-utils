@@ -12,6 +12,6 @@ export class EmptyState {
 
   readonly icon = input('fa-chart-line');
   readonly message = input('NENHUM_DADO_ESTATISTICA_FILTRO_SELECIONADO');
-  readonly height = input(300);
+  readonly height = input('300px');
 
 }

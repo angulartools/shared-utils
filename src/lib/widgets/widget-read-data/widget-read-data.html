@@ -3,7 +3,7 @@
     <p class="text-muted mb-2">{{label() | translate}}</p>
     <h5 class="mt-0 mb-1">
       <span>
-        <span>{{data() == null || data() == "null" ? "-" : data()}}</span>
+        <span>{{data() == null || data() == "null" || data() == '' ? '-' : data()}}</span>
       </span>
     </h5>
   </div>
