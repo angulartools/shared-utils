@@ -1,133 +1,199 @@
-.alert-container {
-	background: #fff;
-	border-radius: 1rem;
-	padding: 2rem;
-	text-align: center;
-	min-width: 350px;
-	max-width: 600px;
-	width: 100%;
-	margin: auto;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-	max-height: 90vh;
-	display: flex;
-	flex-direction: column;
+.alert-wrapper {
+  position: relative;
+  padding: 28px 28px 22px 28px;
+  background-color: var(--card-background-color, #ffffff);
+  border-radius: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.fa-4x {
-	font-size: 4rem;
+.alert-body {
+  padding: 0 0 22px 0 !important;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--border-color-light, #e9ecef);
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
-.text-success {
-	color: #0cc27e;
+.alert-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
 }
 
-.text-error {
-	color: #e74c3c;
+.alert-badge {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 50%;
+  background-color: var(--theme-confirm-50, #e0f2fe);
+  color: var(--theme-confirm-500, #0ea5e9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
 }
 
-.text-warning {
-	color: #f39c12;
+.alert-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+  text-align: left;
 }
 
-.text-info {
-	color: #3498db;
+.alert-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color, #323a46);
+  margin: 0;
+  line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-.text-confirm {
-	color: #7f8c8d;
+.alert-message {
+  font-size: 0.92rem;
+  color: var(--text-muted, #6c757d);
+  margin: 0;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-.title {
-	margin: 0;
-	font-size: 1.75rem;
-	font-weight: 600;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	flex-shrink: 0;
+.alert-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color, #dee2e6);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color, #323a46);
+  background-color: var(--card-background-color, #ffffff);
+  margin-top: 4px;
+  box-sizing: border-box;
+  outline: none;
+
+  &:focus {
+    border-color: var(--theme-primary-500, #4f46e5);
+  }
 }
 
-.message {
-	margin: 1rem 0;
-	font-size: 1rem;
-	color: #444;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	overflow-y: auto;
+.alert-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 18px;
+
+  .cancel-btn {
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    border-color: var(--border-color, #dee2e6);
+    color: var(--text-color, #323a46);
+    text-transform: none;
+
+    &:hover {
+      background-color: var(--bg-hover, #f1f5f7);
+    }
+  }
+
+  .confirm-btn {
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    background-color: var(--theme-confirm-500, #0ea5e9);
+    color: var(--theme-confirm-contrast-500, #ffffff);
+    text-transform: none;
+
+    &:hover {
+      background-color: var(--theme-confirm-700, #0284c7);
+    }
+  }
 }
 
-input {
-	width: 100%;
-	padding: 0.75rem 1rem;
-	border: 1px solid #ccc;
-	border-radius: 6px;
-	font-size: 1rem;
-	margin-top: 1rem;
-	flex-shrink: 0;
+/* Variações semânticas por AlertType */
+.alert-wrapper.confirm {
+  .alert-badge {
+    background-color: var(--theme-confirm-50, #e0f2fe);
+    color: var(--theme-confirm-500, #0ea5e9);
+  }
+
+  .confirm-btn {
+    background-color: var(--theme-confirm-500, #0ea5e9);
+    color: var(--theme-confirm-contrast-500, #ffffff);
+
+    &:hover {
+      background-color: var(--theme-confirm-700, #0284c7);
+    }
+  }
 }
 
-.actions {
-	display: flex;
-	justify-content: center;
-	/* Centraliza horizontalmente */
-	flex-direction: row-reverse;
-	/* Mantém o botão confirmar à direita */
-	gap: 1rem;
-	margin-top: 2rem;
-	flex-shrink: 0;
+.alert-wrapper.warning {
+  .alert-badge {
+    background-color: var(--theme-warning-50, #fff3e0);
+    color: var(--theme-warning-500, #f59e0b);
+  }
+
+  .confirm-btn {
+    background-color: var(--theme-warning-500, #f59e0b);
+    color: var(--theme-warning-contrast-500, #ffffff);
+
+    &:hover {
+      background-color: var(--theme-warning-700, #d97706);
+    }
+  }
 }
 
-.actions button {
-	min-width: 110px;
-	font-weight: 600;
-	text-transform: none;
-	border-radius: 6px;
+.alert-wrapper.error {
+  .alert-badge {
+    background-color: var(--theme-warn-50, #fdeaea);
+    color: var(--theme-warn-500, #f14c51);
+  }
+
+  .confirm-btn {
+    background-color: var(--theme-warn-500, #f14c51);
+    color: var(--theme-warn-contrast-500, #ffffff);
+
+    &:hover {
+      background-color: var(--theme-warn-700, #ed3c40);
+    }
+  }
 }
 
-.confirm-btn {
-	background-color: #0cc27e;
-	color: white;
+.alert-wrapper.success {
+  .alert-badge {
+    background-color: var(--theme-success-50, #e8f5e9);
+    color: var(--theme-success-500, #3ca969);
+  }
+
+  .confirm-btn {
+    background-color: var(--theme-success-500, #3ca969);
+    color: var(--theme-success-contrast-500, #ffffff);
+
+    &:hover {
+      background-color: var(--theme-success-700, #2e7d32);
+    }
+  }
 }
 
-.cancel-btn {
-	background-color: #ff586b;
-	color: white;
-}
+.alert-wrapper.info,
+.alert-wrapper.input {
+  .alert-badge {
+    background-color: color-mix(in srgb, var(--theme-primary-500, #4f46e5) 12%, transparent);
+    color: var(--theme-primary-500, #4f46e5);
+  }
 
-.c {
-	background-color: #f39c12;
-	color: white;
-}
+  .confirm-btn {
+    background-color: var(--theme-primary-500, #4f46e5);
+    color: var(--theme-primary-contrast-500, #ffffff);
 
-/* Ícones por tipo */
-.success .icon {
-	color: #0cc27e;
-}
-
-.error .icon {
-	color: #e74c3c;
-}
-
-.warning .icon {
-	color: #f39c12;
-}
-
-.info .icon {
-	color: #3498db;
-}
-
-.confirm .icon {
-	color: #7f8c8d;
-}
-
-.icon {
-	width: 80px;
-	height: 80px;
-	margin: 0 auto 1rem auto;
-	flex-shrink: 0;
-}
-
-.swal-icon {
-	width: 100%;
-	height: 100%;
-	display: block;
+    &:hover {
+      background-color: var(--theme-primary-700, #4338ca);
+    }
+  }
 }

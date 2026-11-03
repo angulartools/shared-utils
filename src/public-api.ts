@@ -2,6 +2,7 @@
  * Public API Surface of shared-utils
  */
 
+export * from './lib/alert/alert';
 export * from './lib/alert/alert.service';
 export * from './lib/directives/auto-focus.directive';
 export * from './lib/mask/mask';
@@ -14,4 +15,3 @@ export * from './lib/snack-notification/snack-notification.service';
 export * from './lib/widgets/empty-state/empty-state';
 export * from './lib/widgets/skeleton/skeleton';
 export * from './lib/widgets/widget-read-data/widget-read-data';
-

@@ -1,38 +1,49 @@
-<div class="alert-container" [class]="type()">
-    
-	<div class="icon">
-		<i [class]="iconClass()" class="fa-fw fa-4x"></i>
-	</div>
+<div class="alert-wrapper" [class]="type()">
+  <mat-dialog-content class="alert-body">
+    <div class="alert-header-row">
+      <div class="alert-badge" aria-hidden="true">
+        <i [class]="iconClass()"></i>
+      </div>
 
-	<h2 class="title">{{ title() }}</h2>
-	
-	@if (!isInput()) {
-		<p class="message">{{ message() }}</p>
-	} @else {
-		<input
-			[(ngModel)]="inputValue"
-			matInput
-			[placeholder]="placeholder()"
-			type="text"
-		/>
-	}
+      <div class="alert-text-col">
+        @if (title()) {
+          <h2 class="alert-title">{{ title() }}</h2>
+        }
 
-	<div class="actions">
-		@if (isConfirm() || isInput()) {
-			<button
-				mat-button
-				class="cancel-btn"
-				(click)="cancel()">
-				<i class="fa-solid fa-xmark"></i> {{ cancelText() }}
-			</button>
-		}
+        @if (message()) {
+          <p class="alert-message">{{ message() }}</p>
+        }
 
-		<button
-			mat-button
-			class="confirm-btn"
-			(click)="confirm()">
-			<i class="fa-solid fa-check"></i> {{ confirmText() }}
-		</button>
-	</div>
-	
+        @if (isInput()) {
+          <input
+            class="alert-input"
+            [(ngModel)]="inputValue"
+            matInput
+            [placeholder]="placeholder()"
+            type="text"
+          />
+        }
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <div class="alert-actions-row">
+    @if (hasCancel()) {
+      <button
+        type="button"
+        mat-stroked-button
+        class="cancel-btn"
+        (click)="cancel()">
+        {{ cancelText() }}
+      </button>
+    }
+
+    <button
+      type="button"
+      mat-flat-button
+      class="confirm-btn"
+      (click)="confirm()">
+      {{ confirmText() }}
+    </button>
+  </div>
 </div>
