@@ -10,6 +10,7 @@ export * from './lib/modals/image-viewer-modal/image-viewer-modal';
 export * from './lib/pipes/cpf-cnpj-format.pipe';
 export * from './lib/pipes/safe.pipe';
 export * from './lib/services/maximize-screen.service';
+export * from './lib/services/temporizador-atualizacao';
 export * from './lib/services/update-component.service';
 export * from './lib/snack-notification/snack-notification.service';
 export * from './lib/widgets/empty-state/empty-state';

@@ -1,87 +1,77 @@
 import { Service, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { TemporizadorAtualizacao } from './temporizador-atualizacao';
 
 @Service()
 export class UpdateComponentService implements OnDestroy {
+  private readonly temporizador = new TemporizadorAtualizacao();
 
-  intervaloUpdate = 60;
-  contadorUpdate = 0;
-  vTimerUpdate = null;
+  get intervaloUpdate(): number {
+    return this.temporizador.intervaloUpdate;
+  }
+  set intervaloUpdate(value: number) {
+    this.temporizador.intervaloUpdate = value;
+  }
 
-  display;
-  stopZero;
+  get contadorUpdate(): number {
+    return this.temporizador.contadorUpdate;
+  }
+  set contadorUpdate(value: number) {
+    this.temporizador.contadorUpdate = value;
+  }
 
-  private update: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  update$: Observable<boolean> = this.update.asObservable();
+  get vTimerUpdate(): any {
+    return this.temporizador.vTimerUpdate;
+  }
+  set vTimerUpdate(value: any) {
+    this.temporizador.vTimerUpdate = value;
+  }
 
-  constructor() {
-    // this.initTimer();
+  get display(): string {
+    return this.temporizador.display;
+  }
+  set display(value: string) {
+    this.temporizador.display = value;
+  }
+
+  get stopZero(): boolean {
+    return this.temporizador.stopZero;
+  }
+  set stopZero(value: boolean) {
+    this.temporizador.stopZero = value;
+  }
+
+  get update$(): Observable<boolean> {
+    return this.temporizador.update$;
   }
 
   ngOnDestroy(): void {
     this.stopIntervalo();
   }
 
-  initTimer() {
-    if (this.vTimerUpdate === null) {
-      if (this.contadorUpdate === 0) {
-        this.contadorUpdate = this.intervaloUpdate;
-      }
-      //setTimeout(() => {
-      this.vTimerUpdate = this.timerUpdate();
-      //}, 1000);
-    }
+  initTimer(): void {
+    this.temporizador.initTimer();
   }
 
-  updateIntervalo(intervalo, stopZero = false) {
-    this.intervaloUpdate = intervalo;
-    this.contadorUpdate = intervalo;
-    this.stopZero = stopZero;
+  updateIntervalo(intervalo: number, stopZero: boolean = false): void {
+    this.temporizador.updateIntervalo(intervalo, stopZero);
   }
 
-  updateScreen() {
-    this.update.next(true);
-    this.contadorUpdate = this.intervaloUpdate;
-    this.update.next(false);
+  updateScreen(): void {
+    this.temporizador.updateScreen();
   }
 
-  stopIntervalo() {
-    clearInterval(this.vTimerUpdate);
-    this.vTimerUpdate = null;
+  stopIntervalo(): void {
+    this.temporizador.stopIntervalo();
   }
 
-  timerUpdate() {
-    return setInterval(() => {
-      if (this.contadorUpdate !== 0) {
-        this.contadorUpdate = --this.contadorUpdate;
-      }
-
-      this.setDisplay(this.contadorUpdate);
-
-      if (this.contadorUpdate === 0 && !this.stopZero) {
-        this.updateScreen();
-      }
-    }, 1000);
+  setDisplay(seconds: number): void {
+    this.temporizador.setDisplay(seconds);
   }
 
-  setDisplay(seconds) {
-
-    let minute = seconds / 60;
-    let textSec: any = "0";
-
-    const prefix = minute < 10 ? "0" : "";
-
-    let textMinuto = Math.floor(minute);
-
-    const resto = seconds - (textMinuto * 60);
-
-    if (resto < 10) {
-      textSec = "0" + resto;
-    } else {
-      textSec = resto;
-    }
-
-    this.display = `${prefix}${textMinuto}:${textSec}`;
+  timerUpdate(): any {
+    return this.temporizador.timerUpdate();
   }
-
 }
+
+export { TemporizadorAtualizacao };
